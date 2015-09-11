@@ -16,7 +16,6 @@ class DataModelClass(BaseModelClass):
         fieldnames = self.__dict__.keys()
         for k,v in kwargs.items():
             k = k.lower().strip()
-            v = unicode(v.decode('utf-8'))
             if k in fieldnames:
                 setattr(self, k, v)
 
