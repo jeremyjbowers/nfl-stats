@@ -55,6 +55,8 @@ class Load(utils.BaseModelClass):
         self.set_data_directory()
         self.game_id = '2015091000'
         self.game_obj = None
+        self.home_team_obj = None
+        self.away_team_obj = None
 
     def get_data(self):
         with open('%s/schedule.json' % self.DATA_DIRECTORY, 'r') as readfile:
@@ -62,8 +64,8 @@ class Load(utils.BaseModelClass):
 
         for game in games:
             if game['id'] == self.game_id:
-                home_team = Team(**game['home_team'])
-                away_yeam = Team(**game['away_team'])
+                self.home_team_obj = Team(**game['home_team'])
+                self.away_team_obj = Team(**game['away_team'])
                 g = Game(**game)
                 break
 
