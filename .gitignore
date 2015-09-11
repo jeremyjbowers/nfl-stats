@@ -1,0 +1,5 @@
+pynfl/data/
+*.pyc
+*.pyo
+dist/
+*.egg-info/
