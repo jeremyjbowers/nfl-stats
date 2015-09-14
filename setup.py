@@ -12,7 +12,7 @@ def read(filename):
 
 setup(
     name='nfl-stats',
-    version='0.0.2',
+    version='0.0.3',
     author='Jeremy Bowers',
     author_email='jeremyjbowers@gmail.com',
     url='https://github.com/jeremyjbowers/nfl-stats',
