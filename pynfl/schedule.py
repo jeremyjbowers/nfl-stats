@@ -61,7 +61,7 @@ class Load(utils.BaseModelClass):
 
                 # Decide if this is a DATE item or a GAME item.
                 if ("schedules-list-date" in li.attrs['class']) and ("next-game" not in li.attrs['class']):
-                    current_date = li.text.strip()
+                    current_date = li.text.replace('View Full Thursday Night Football Schedule','').replace(u'\u00a0\u00bb','').strip()
 
                 if current_date and ("schedules-list-matchup" in li.attrs['class']):
                     """
@@ -71,7 +71,7 @@ class Load(utils.BaseModelClass):
                     game = li.select('div.schedules-list-content')[0]
                     g.id = game.attrs['data-gameid']
                     g.week = week
-                    g.date = current_date
+                    g.date = current_date.replace('View Full Thursday Night Football Schedule','').replace(u'\u00a0\u00bb','').strip()
                     g.time = li.select('div.schedules-list-hd span.time')[0].text.strip()
                     g.site = game.attrs['data-site']
 

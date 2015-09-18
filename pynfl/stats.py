@@ -53,7 +53,7 @@ class Load(utils.BaseModelClass):
     def __init__(self, *args, **kwargs):
         self.data_url = 'http://www.nfl.com/liveupdate/game-center/%s/%s_gtd.json'
         self.set_data_directory()
-        self.game_id = '2015091000'
+        self.game_id = '2015091700'
         self.game_obj = None
         self.home_team_obj = None
         self.away_team_obj = None
