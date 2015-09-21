@@ -1,13 +1,3 @@
-# nfl-stats
-
-## Usage
-#### Run the demo app.
-```
-python -m pynfl.demo
-```
-
-#### Use pynfl in your own app.
-```
 """
 A demo app that will print stats from this week's games.
 """
@@ -40,15 +30,6 @@ for game in week_games:
     g.get_data()
     g.write_data()
     try:
-        # Instead of printing here, you might do something?
-        # Like alert the quarter, down and distance?
         print g.game_obj.__dict__
     except:
         pass
-```
-
-#### Download the files for later use?
-```
-python -m pynfl.schedule
-python -m pynfl.stats
-```

@@ -1,4 +1,5 @@
 import json
+import os
 
 from bs4 import BeautifulSoup
 import requests
@@ -18,7 +19,7 @@ class Game(utils.DataModelClass):
         self.home_team = None
         self.away_team = None
 
-        self.set_fields()
+        self.set_fields(**kwargs)
 
     def __unicode__(self):
         return str(self.id)
@@ -31,7 +32,7 @@ class Team(utils.DataModelClass):
         self.mascot = None
         self.abbr = None
 
-        self.set_fields()
+        self.set_fields(**kwargs)
 
     def __unicode__(self):
         return self.abbr
@@ -45,6 +46,15 @@ class Load(utils.BaseModelClass):
         self.games = []
 
         self.set_data_directory()
+
+    def read_data(self):
+        if os.path.isfile('%s/schedule.json' % self.DATA_DIRECTORY):
+            with open('%s/schedule.json' % self.DATA_DIRECTORY, 'r') as readfile:
+                for item in json.loads(readfile.read()):
+                    g = Game(**item)
+                    g.home_team = Team(**item['home_team'])
+                    g.away_team = Team(**item['away_team'])
+                    self.games.append(g)
 
     def get_data(self):
         for week in self.weeks:
@@ -95,3 +105,4 @@ if __name__ == "__main__":
     l = Load()
     l.get_data()
     l.write_data()
+    l.read_data()

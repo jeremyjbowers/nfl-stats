@@ -39,8 +39,7 @@ class BaseModelClass(object):
 
 
 class DataModelClass(BaseModelClass):
-
-    def set_fields(self, **kwargs):
+    def set_fields(self, *args, **kwargs):
         fieldnames = self.__dict__.keys()
         for k,v in kwargs.items():
             k = k.lower().strip()
